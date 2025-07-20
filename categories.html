@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Выберите категорию товаров | Wildberries</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .category-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border: 3px solid transparent;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            border-color: #667eea;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .category-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .category-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .category-card p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .discount-badge {
+            background: linear-gradient(45deg, #ff6b6b, #ff4757);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .stats {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            color: white;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: #ff4757;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .category-card {
+            position: relative;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .categories-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .category-icon {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Выберите категорию</h1>
+            <p>Товары, которые не забрали с ПВЗ, отсортированы по категориям</p>
+        </div>
+
+        <div class="categories-grid">
+            <div class="category-card" onclick="selectCategory('fashion')">
+                <div class="popular-badge">Хит</div>
+                <span class="category-icon">👗</span>
+                <h3>Одежда и обувь</h3>
+                <p>Модная одежда всех размеров</p>
+                <div class="discount-badge">до -65%</div>
+            </div>
+
+            <div class="category-card" onclick="selectCategory('electronics')">
+                <span class="category-icon">📱</span>
+                <h3>Электроника</h3>
+                <p>Смартфоны, ноутбуки, гаджеты</p>
+                <div class="discount-badge">до -45%</div>
+            </div>
+
+            <div class="category-card" onclick="selectCategory('home')">
+                <span class="category-icon">🏠</span>
+                <h3>Дом и сад</h3>
+                <p>Товары для дома и дачи</p>
+                <div class="discount-badge">до -70%</div>
+            </div>
+
+            <div class="category-card" onclick="selectCategory('beauty')">
+                <div class="popular-badge">Топ</div>
+                <span class="category-icon">💄</span>
+                <h3>Красота и здоровье</h3>
+                <p>Косметика, парфюмерия, уход</p>
+                <div class="discount-badge">до -60%</div>
+            </div>
+
+            <div class="category-card" onclick="selectCategory('sport')">
+                <span class="category-icon">⚽</span>
+                <h3>Спорт и отдых</h3>
+                <p>Спортивная одежда и инвентарь</p>
+                <div class="discount-badge">до -55%</div>
+            </div>
+
+            <div class="category-card" onclick="selectCategory('kids')">
+                <span class="category-icon">🧸</span>
+                <h3>Детские товары</h3>
+                <p>Игрушки, одежда, товары для детей</p>
+                <div class="discount-badge">до -50%</div>
+            </div>
+
+            <div class="category-card" onclick="selectCategory('auto')">
+                <span class="category-icon">🚗</span>
+                <h3>Авто и мото</h3>
+                <p>Автотовары и аксессуары</p>
+                <div class="discount-badge">до -40%</div>
+            </div>
+
+            <div class="category-card" onclick="selectCategory('books')">
+                <span class="category-icon">📚</span>
+                <h3>Книги и хобби</h3>
+                <p>Книги, канцтовары, творчество</p>
+                <div class="discount-badge">до -35%</div>
+            </div>
+        </div>
+
+        <div class="stats">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">24</span>
+                    <span class="stat-label">часа обновления</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">5,847</span>
+                    <span class="stat-label">товаров сегодня</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">67%</span>
+                    <span class="stat-label">средняя скидка</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">1,243</span>
+                    <span class="stat-label">покупателей сейчас</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function selectCategory(category) {
+            // Добавляем небольшую задержку для анимации
+            setTimeout(() => {
+                // Переход на страницу приложения
+                window.location.href = 'app.html?category=' + category;
+            }, 200);
+            
+            // Анимация клика
+            event.target.closest('.category-card').style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                event.target.closest('.category-card').style.transform = 'scale(1)';
+            }, 100);
+        }
+
+        // Анимация счетчиков при загрузке
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            counters.forEach(counter => {
+                const target = parseInt(counter.textContent.replace(/,/g, ''));
+                let current = 0;
+                const increment = target / 50;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        counter.textContent = target.toLocaleString();
+                        clearInterval(timer);
+                    } else {
+                        counter.textContent = Math.floor(current).toLocaleString();
+                    }
+                }, 30);
+            });
+        }
+
+        // Запускаем анимацию через секунду после загрузки
+        window.addEventListener('load', () => {
+            setTimeout(animateCounters, 1000);
+        });
+    </script>
+</body>
+</html>

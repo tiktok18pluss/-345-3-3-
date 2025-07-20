@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Скачайте приложение Wildberries</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .app-promo {
+            background: white;
+            border-radius: 30px;
+            padding: 50px;
+            text-align: center;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .app-promo::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .phone-icon {
+            font-size: 5rem;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .app-promo h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #333;
+            position: relative;
+            z-index: 2;
+        }
+
+        .app-promo .subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .reason-box {
+            background: linear-gradient(135deg, #ff6b6b, #ff4757);
+            color: white;
+            padding: 25px;
+            border-radius: 20px;
+            margin: 30px 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .reason-box h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .feature h4 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .feature p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .download-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
+        }
+
+        .download-btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.3);
+        }
+
+        .download-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.4);
+        }
+
+        .download-btn.ios {
+            background: linear-gradient(45deg, #000, #333);
+        }
+
+        .download-btn.android {
+            background: linear-gradient(45deg, #34a853, #4caf50);
+        }
+
+        .install-guide {
+            background: #f8f9fa;
+            border: 2px solid #667eea;
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 30px;
+            text-align: left;
+            position: relative;
+            z-index: 2;
+        }
+
+        .install-guide h3 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .install-guide ol {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+
+        .install-guide li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        .security-note {
+            background: rgba(52, 168, 83, 0.1);
+            border: 1px solid #34a853;
+            border-radius: 8px;
+            padding: 10px;
+            margin-top: 15px;
+            color: #34a853;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .urgency-text {
+            background: rgba(255, 71, 87, 0.1);
+            border: 2px solid #ff4757;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .urgency-text p {
+            margin: 0;
+            font-weight: bold;
+            color: #ff4757;
+        }
+
+        .back-link {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .back-link:hover {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+            }
+            
+            .app-promo {
+                padding: 30px 25px;
+            }
+            
+            .app-promo h1 {
+                font-size: 2rem;
+            }
+            
+            .download-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .download-btn {
+                width: 100%;
+                max-width: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="javascript:history.back()" class="back-link">← Назад к категориям</a>
+    
+    <div class="container">
+        <div class="app-promo">
+            <div class="phone-icon">📱</div>
+            <h1>Поиск по товарам доступен только в приложении</h1>
+            <p class="subtitle">Для удобного поиска скидочных товаров используйте мобильное приложение Wildberries</p>
+            
+            <div class="reason-box">
+                <h3>🔍 Почему только в приложении?</h3>
+                <p>Товары, которые не забрали с ПВЗ, поступают в продажу моментально после оплаты штрафа. Мобильное приложение позволяет мгновенно получать уведомления о новых поступлениях и покупать их до того, как разберут другие</p>
+            </div>
+            
+            <div class="features">
+                <div class="feature">
+                    <span class="feature-icon">🔔</span>
+                    <h4>Мгновенные уведомления</h4>
+                    <p>Узнавайте первыми о новых товарах</p>
+                </div>
+                
+                <div class="feature">
+                    <span class="feature-icon">⚡</span>
+                    <h4>Быстрая покупка</h4>
+                    <p>Покупайте в один клик, пока товар не разобрали</p>
+                </div>
+                
+                <div class="feature">
+                    <span class="feature-icon">🎯</span>
+                    <h4>Умные фильтры</h4>
+                    <p>Настройте поиск по размеру, бренду, цене</p>
+                </div>
+            </div>
+            
+            <div class="download-buttons">
+                <a href="#" class="download-btn ios" onclick="downloadApp('ios')">
+                    🍎 App Store
+                </a>
+                <a href="downloads/wildberries-app.apk" class="download-btn android" onclick="downloadApp('android')" download>
+                    🤖 Скачать APK
+                </a>
+            </div>
+            
+            <div class="install-guide" id="installGuide" style="display: none;">
+                <h3>📋 Как установить APK файл:</h3>
+                <ol>
+                    <li>Разрешите установку из неизвестных источников в настройках Android</li>
+                    <li>Скачайте файл wildberries-app.apk</li>
+                    <li>Откройте файл и нажмите "Установить"</li>
+                    <li>После установки откройте приложение</li>
+                </ol>
+                <p class="security-note">🔒 Файл проверен и безопасен для установки</p>
+            </div>
+            
+            <div class="urgency-text">
+                <p>⏰ Каждую минуту появляются новые товары. Не упустите выгодные предложения!</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Получаем категорию из URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const category = urlParams.get('category');
+        
+        // Определяем OS пользователя
+        function detectOS() {
+            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            
+            if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                return 'ios';
+            }
+            
+            if (/android/i.test(userAgent)) {
+                return 'android';
+            }
+            
+            return 'desktop';
+        }
+
+        function downloadApp(platform) {
+            const os = detectOS();
+            
+            if (platform === 'android') {
+                // Показываем инструкцию для Android
+                document.getElementById('installGuide').style.display = 'block';
+                document.getElementById('installGuide').scrollIntoView({ behavior: 'smooth' });
+                
+                // Аналитика
+                console.log(`APK download initiated from category ${category}`);
+                
+                // Можно добавить уведомление
+                setTimeout(() => {
+                    alert('📱 Файл скачивается! Следуйте инструкции ниже для установки.');
+                }, 1000);
+                
+            } else if (platform === 'ios') {
+                // Для iOS - заглушка или редирект на App Store
+                alert('🍎 Версия для iOS находится в разработке. Используйте Android версию.');
+            }
+        }
+
+        // Автоматическое определение платформы и выделение соответствующей кнопки
+        window.addEventListener('load', () => {
+            const os = detectOS();
+            if (os !== 'desktop') {
+                const btn = document.querySelector(`.download-btn.${os}`);
+                if (btn) {
+                    btn.style.border = '3px solid #ffeb3b';
+                    btn.style.boxShadow = '0 0 20px rgba(255, 235, 59, 0.5)';
+                }
+            }
+        });
+
+        // Анимация для привлечения внимания к кнопкам
+        setInterval(() => {
+            const buttons = document.querySelectorAll('.download-btn');
+            buttons.forEach((btn, index) => {
+                setTimeout(() => {
+                    btn.style.transform = 'scale(1.05)';
+                    setTimeout(() => {
+                        btn.style.transform = 'scale(1)';
+                    }, 200);
+                }, index * 100);
+            });
+        }, 5000);
+    </script>
+</body>
+</html>
